@@ -1,0 +1,8 @@
+# Simplified EGD CSV
+Producer,Exchange,Address,Type
+1,01,0000.0,UINT
+1,01,0002.0,UINT
+1,01,0004.0,UINT
+2,03,0000.1,BOOL
+2,03,0000.2,BOOL
+2,03,0010.0,UINT

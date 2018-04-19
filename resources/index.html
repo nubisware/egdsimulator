@@ -1,0 +1,254 @@
+<html>
+	<head>
+    <meta charset="UTF-8">
+    <title>EGD Simulator</title>
+    <style>
+    	body{{
+    		font-family: sans-serif;
+    		display: flex;
+    		flex-direction: column;
+    	}}
+
+    	button{{
+    		background:#CCC;
+    		cursor:pointer;
+    		margin: 1em;
+    	}}
+
+    	div.errordialog{{
+    		z-index: 10;
+				width: 70%;
+				padding: 3em;
+				position: absolute;
+				left: 15%;
+				top: 10%;
+				text-align: center;
+				font-size: 2em;
+				background-color: #FF9999;
+				vertical-align: middle;
+				box-shadow: black 2px 2px 2px;
+    	}}
+
+    	label.form-input{{
+    		line-height: 1.2em;
+    		margin: 5px;
+    		font-weight: bold;
+    	}}
+
+    	input{{
+				font-size: 1.4em;
+				font-weight: bold;
+				border-radius: 5px;
+				border: none;
+				background: #EEE;
+				padding: 12px;
+				box-shadow: gray 2px 2px 2px inset;
+				outline: none;
+    	}}
+
+    	input[type=checkbox]{{
+				transform: scale(2);
+				margin:12px;
+				box-shadow: none;
+			}}
+
+    	section{{
+    		display: flex;
+    		flex-direction: row;
+    		flex-wrap: wrap;
+    	}}
+
+    	.csvuploader{{
+    		background-color:#CCC; 
+    		width:200px;
+    		height:inherit;
+    		margin-left:1em;
+    		box-shadow:gray 2px 2px;
+    	}}
+
+    	.csvuploader:active{{
+    		box-shadow: none;
+    	}}
+
+    	.csvuploader>span{{
+    		font-size: 1.5em;
+    		text-align: center;
+    		display: block;
+    		opacity: .5;
+    		overflow : hidden;
+    		text-overflow: ellipsis;
+    	}}
+
+    	.csvuploader>input{{
+    		width:0; 
+    		height:0;
+    		opacity: 0;
+    	}}
+
+    	.csvuploader.full{{
+    		background-color: transparent;
+    		box-shadow: none;
+    		border: solid 1px #CCC;
+    	}}
+
+    	.csvuploader.full span[name=default]{{
+    		display: none;
+    	}}
+
+    	.csvuploader.empty span[name=file]{{
+    		display: none;
+    	}}
+
+    	.dragover{{
+    		background-color: white;
+    	}}
+    	
+    	form{{
+    		display: flex;
+    		flex-direction: row;
+    		flex-wrap: wrap;
+    		justify-content: space-around;
+    	}}
+    
+    	table, td{{
+    		border: solid black 1px;
+    		border-collapse: collapse;
+    	}}
+    	tr.producer>td, tr.exchange>td{{
+    		padding: 1em;
+    		border: none
+    	}}
+    	tr.producer{{
+    		background-color: #777777;
+    		border: solid black 1px;
+    		border-collapse: collapse;
+    	}}
+    	tr.exchange{{
+    		background-color: #aaaaaa;
+    		border: solid black 1px;
+    		border-collapse: collapse;
+    	}}
+    	tr.tag{{
+    		display: none;
+    	}}
+    	td.toggle, td.toggle label{{
+    		cursor: pointer;
+    	}}
+    	td.toggle label:after{{
+    		content: "\1F5C0";
+    		font-weight: bold;
+    	}}
+    	td.toggle.open label:after{{
+    		content: "\1F5C1";
+    		font-weight: bold;
+    	}}
+    	form.command{{
+    		display: block;
+    	}}
+    	.inactive{{
+    		opacity: 0.3;
+    		pointer-events: none;
+    	}}
+    	.invisible{{
+    		display: none;
+    	}}
+    	
+    	header{{
+    		display: flex;
+    		justify-content: space-between;
+    		border-bottom:solid 1px #CCC;
+    		margin-bottom:1em;
+    		flex-wrap: wrap;
+    	}}
+    </style>
+  </head>
+  <body>
+  	<div class="errordialog {errorvisible}" onclick="this.classList.add('invisible')">
+  		{error}
+  	</div>
+  	<header>
+  		<h1>EGD Simulator</h1>
+  		<div>
+  			<a target="_blank_" href="/documentation">
+  				<h2 style="display:inline; position:relative; bottom:.8em; margin-right:1em;">Documentation</h2>
+  			</a>	
+  			<a target="_blank_" href="http://www.nubisware.com">
+					<picture>
+						<img src="/logo" style="max-width:250px"/>
+					</picture>
+				</a>	
+  		</div>
+  	</header>
+  	<section class="CSV">
+  		<form id="CONFIG_FORM" action="/configure" method="post" enctype="multipart/form-data">
+				<div style="display:flex">
+					<div style="display:flex; flex-direction:column">
+						<label class="form-input">Delimiter : <input name="delimiter" type="text" value="{delimiter}" style="width:5em"/></label>
+						<label class="form-input">Skip lines: <input name="skiplines" type="number" value="{skiplines}" style="width:5em"/></label>
+					</div>
+					<label class="csvuploader empty" id="CUSTOM">
+						<input type="file" name="custom"/>
+						<span name="default">Import Simplified CSV</span>
+						<span name="file" style="white-space:nowrap;font-size:1em;"></span>
+					</label>
+					<label class="csvuploader empty" id="MKVIE">
+						<input type="file" name="mkvie"/>
+						<span name="default">Import MarkVIe CSV</span>
+						<span name="file" style="white-space:nowrap;font-size:1em;"></span>
+					</label>
+				</div>
+			</form>
+  	</section>
+		<section class="commands">
+			<form action="/start" method="post" enctype="multipart/form-data" class="command {displaystart}" title="Start simulator" alt="Start simulator">
+				<label class="form-input">Address: <input name="address" type="text" value="{address}"/></label>
+				<label class="form-input">Fixed: <input name="fixed" type="checkbox" value="fixed" {fixed}/></label>
+				<button type="submit" value="start" style="vertical-align:middle">
+					<svg width="50" height="50">
+						<path d="M5,5 l40,20 l-40,20 z" style="fill:green" />
+					</svg>
+				</button>
+			</form>
+			<form action="/stop" method="post" class="command {displaystop}" title="Update configuration" alt="Update configuration">
+				<button type="submit" value="stop" style="vertical-align:middle">
+					<svg width="50" height="50">
+						<rect x="5" y="5" width="15" height="40" style="fill:red"/>
+						<rect x="25" y="5" width="15" height="40" style="fill:red"/>
+					</svg>
+				</button>
+			</form>
+		</section>
+		<section class="monitoring">
+			{egd}
+		</section>
+  </body>
+  <script>  	
+
+  	var configform = document.querySelector("#CONFIG_FORM"),
+		configbutton = document.querySelector("#CONFIG_BUTTON")
+
+  	let uploaders = document.querySelectorAll(".csvuploader")
+  	for(let i=0; i < uploaders.length; i++){{
+			let input = uploaders[i].querySelector("input")
+			input.addEventListener("change", (ev)=>{{
+				configform.submit()
+			}})
+		}}
+
+  	var toggles = document.querySelectorAll("td.toggle")
+  	for(var i=0; i < toggles.length; i++){{
+  		var toggle = toggles[i]
+  		toggle.addEventListener("click",
+  			function(ev){{
+  				ev.currentTarget.classList.toggle("open")
+  				var exchangerow = ev.currentTarget.parentElement
+  				var sibling = exchangerow.nextElementSibling
+  				while(!!sibling && sibling.classList.contains("tag")){{
+  					sibling.style.display = (sibling.style.display == "none" || sibling.style.display == "" ? "table-row" : "none") 
+  					sibling = sibling.nextElementSibling
+  				}}
+  			}}
+  		)
+  	}}
+  </script>
+</html>
