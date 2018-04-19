@@ -187,15 +187,15 @@
   		<form id="CONFIG_FORM" action="/configure" method="post" enctype="multipart/form-data">
 				<div style="display:flex">
 					<div style="display:flex; flex-direction:column">
-						<label class="form-input">Delimiter : <input name="delimiter" type="text" value="{delimiter}" style="width:5em"/></label>
-						<label class="form-input">Skip lines: <input name="skiplines" type="number" value="{skiplines}" style="width:5em"/></label>
+						<label class="form-input" title="Delimiter for columns" alt="Delimiter for columns">Delimiter : <input name="delimiter" type="text" value="{delimiter}" style="width:5em"/></label>
+						<label class="form-input" title="Comment or header lines to skip in the CSV" alt="Comment or header lines to skip in the CSV">Skip lines: <input name="skiplines" type="number" value="{skiplines}" style="width:5em"/></label>
 					</div>
-					<label class="csvuploader empty" id="CUSTOM">
+					<label class="csvuploader empty" id="CUSTOM" title="Upload simplified CSV format" alt="Upload simplified CSV format">
 						<input type="file" name="custom"/>
 						<span name="default">Import Simplified CSV</span>
 						<span name="file" style="white-space:nowrap;font-size:1em;"></span>
 					</label>
-					<label class="csvuploader empty" id="MKVIE">
+					<label class="csvuploader empty" id="MKVIE" title="Upload CSV as exported by Mark VIe" alt="Upload CSV as exported by Mark VIe">
 						<input type="file" name="mkvie"/>
 						<span name="default">Import MarkVIe CSV</span>
 						<span name="file" style="white-space:nowrap;font-size:1em;"></span>
@@ -205,8 +205,8 @@
   	</section>
 		<section class="commands">
 			<form action="/start" method="post" enctype="multipart/form-data" class="command {displaystart}" title="Start simulator" alt="Start simulator">
-				<label class="form-input">Address: <input name="address" type="text" value="{address}"/></label>
-				<label class="form-input">Fixed: <input name="fixed" type="checkbox" value="fixed" {fixed}/></label>
+				<label class="form-input" title="UDP Address for broadcasting values" alt="UDP Address for broadcasting values">Address: <input name="address" type="text" value="{address}"/></label>
+				<label class="form-input" title="Generate constant values" alt="Generate constant values">Fixed: <input name="fixed" type="checkbox" value="fixed" {fixed}/></label>
 				<button type="submit" value="start" style="vertical-align:middle">
 					<svg width="50" height="50">
 						<path d="M5,5 l40,20 l-40,20 z" style="fill:green" />

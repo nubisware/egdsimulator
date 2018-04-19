@@ -35,6 +35,8 @@ python egdsimulator_http.py -p NEWPORT
 ```
 From the configuration interface it's possible to upload a CSV representing the setup of the simulator. Currently the simulator supports the CSV format obtained from exporting a setup from the MARK VI e control software and a simplified CSV format that contains only the four relevant information field for every tag.
 
+Two example files for both formats are supplied in the _resource_ folder.
+
 Separator and initial number of lines to be skipped for the CSV parser may be specified before uploading.
 
 Example MARK VI export format is:
