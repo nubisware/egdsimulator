@@ -1,0 +1,3 @@
+[submodule "egdmodel"]
+	path = egdmodel
+	url = https://github.com/nubisware/egdmodel.git
