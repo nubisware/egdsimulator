@@ -24,7 +24,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			<tr class="exchange">
 				<td>Exchange {}</td>
 				<td>Period {} (ms)</td>
-				<td>Time {}</td>
+				<td>Msg {}</td>
 				<td>{} tags</td>
 				<td class="toggle"><label></label></td>
 			</tr>

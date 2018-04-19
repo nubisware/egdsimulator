@@ -40,12 +40,17 @@ Separator and initial number of lines to be skipped for the CSV parser may be sp
 Example MARK VI export format is:
 
 ```
-#(V05.02.04C) EGD Point List Report for PTT_1609256_59_T1,,,,,,,,,,,,,,,,,,
-Entry No,Variable,Point Name,Point Offset,Direction,Data Type,CIMPLICITY Resource,Units,Producer ID,Period(ms),Exchange Name,Destination,Description,Alias,Second Language Description,Path,Format Specification,,
-617,FAKEBOOL1,EGD.ProducedPages.FastEGD.Exchange3.Point_23,03.0003.1,ReadOnly,BOOL,,nd,1701122220,10,Exchange3,172.16.111.255,fake bool 1,,,System:PTT_1609256_59|Device:T1|EGD:|EgdPageList:ProducedPages|EgdPage:FastEGD|EgdExchange:Exchange3|EgdVariable:REGULATOR,N_D,,
-618,FAKEBOOL2,EGD.ProducedPages.FastEGD.Exchange3.Point_23,03.0003.2,ReadOnly,BOOL,,nd,1701122220,10,Exchange3,172.16.111.255,fake bool 2,,,System:PTT_1609256_59|Device:T1|EGD:|EgdPageList:ProducedPages|EgdPage:FastEGD|EgdExchange:Exchange3|EgdVariable:REGULATOR,N_D,,
-619,WF36DMD,EGD.ProducedPages.FastEGD.Exchange3.Point_30,03.0032.0,ReadOnly,REAL,,lb/hr,1701122220,10,Exchange3,172.16.111.255,fuel flow demand,,,System:PTT_1609256_59|Device:T1|EGD:|EgdPageList:ProducedPages|EgdPage:FastEGD|EgdExchange:Exchange3|EgdVariable:WF36DMD,PPH,,
-620,NPTDROPSPD,EGD.ProducedPages.FastEGD.Exchange3.Point_31,03.0036.0,ReadOnly,REAL,,,1701122220,10,Exchange3,172.16.111.255,NPT droop speed signal,,,System:PTT_1609256_59|Device:T1|EGD:|EgdPageList:ProducedPages|EgdPage:FastEGD|EgdExchange:Exchange3|EgdVariable:NPTDROPSPD,,,
+#(V05.02.04C) EGD Point List Report for example,,,,,,,,,,,,,,,,
+Entry No,Variable,Point Name,Point Offset,Direction,Data Type,CIMPLICITY Resource,Units,Producer ID,Period(ms),Exchange Name,Destination,Description,Alias,Second Language Description,Path,Format Specification
+617,FAKEBOOL1,EGD.ProducedPages.FastEGD.Exchange3.Point_23,03.0003.1,ReadOnly,BOOL,,nd,1701122220,10,Exchange3,172.16.111.255,fake bool 1,,,System:PTT_1609256_59|Device:T1|EGD:|EgdPageList:ProducedPages|EgdPage:FastEGD|EgdExchange:Exchange3|EgdVariable:a,N_D
+618,FAKEBOOL2,EGD.ProducedPages.FastEGD.Exchange3.Point_23,03.0003.2,ReadOnly,BOOL,,nd,1701122220,10,Exchange3,172.16.111.255,fake bool 2,,,System:PTT_1609256_59|Device:T1|EGD:|EgdPageList:ProducedPages|EgdPage:FastEGD|EgdExchange:Exchange3|EgdVariable:b,N_D
+619,FAKEREAL1,EGD.ProducedPages.FastEGD.Exchange3.Point_30,03.0032.0,ReadOnly,REAL,,lb/hr,1701122220,10,Exchange3,172.16.111.255,fake real 1,,,System:PTT_1609256_59|Device:T1|EGD:|EgdPageList:ProducedPages|EgdPage:FastEGD|EgdExchange:Exchange3|EgdVariable:c,PPH
+620,FAKEREAL2,EGD.ProducedPages.FastEGD.Exchange3.Point_31,03.0036.0,ReadOnly,REAL,,,1701122220,10,Exchange3,172.16.111.255,fake real 2,,,System:PTT_1609256_59|Device:T1|EGD:|EgdPageList:ProducedPages|EgdPage:FastEGD|EgdExchange:Exchange3|EgdVariable:d,
+627,FAKEDINT,EGD.ProducedPages.FastEGD.Exchange3.Point_40,03.0072.0,ReadOnly,DINT,,nd,1701122220,10,Exchange3,172.16.111.255,fake dint,,,System:PTT_1609256_59|Device:T1|EGD:|EgdPageList:ProducedPages|EgdPage:FastEGD|EgdExchange:Exchange3|EgdVariable:e,N_D
+649,FAKEINT,EGD.ProducedPages.FastEGD.Exchange3.Point_23,03.0004.0,ReadOnly,INT,,nd,1701122220,10,Exchange3,172.16.111.255,fake int,,,System:PTT_1609256_59|Device:T1|EGD:|EgdPageList:ProducedPages|EgdPage:FastEGD|EgdExchange:Exchange3|EgdVariable:f,N_D
+1334,FAKEUDINT,EGD.ProducedPages._Status.Exchange1.Point_464,01.0292.0,ReadOnly,UDINT,,,1701122220,250,Exchange1,172.16.111.255,fake udint,,,System:PTT_1609256_59|Device:T1|EGD:|EgdPageList:ProducedPages|EgdPage:_Status|EgdExchange:Exchange1|EgdVariable:g,
+1498,FAKEUINT,EGD.ProducedPages._Status.Exchange1.Point_400,01.0060.0,ReadOnly,UINT,,,1701122220,250,Exchange1,172.16.111.255,fake uint,,,System:PTT_1609256_59|Device:T1|EGD:|EgdPageList:ProducedPages|EgdPage:_Status|EgdExchange:Exchange1|EgdVariable:h,
+
 ```
 
 Example simplified CSV format is:
