@@ -19,7 +19,7 @@ class EGDSimulator():
 			self.fixed = fixed
 
 		def computeValue(self, tag):
-			if tag.type == "REAL":
+			if tag.type in ["REAL","LREAL"]:
 				tag.lastvalue = tag.lastvalue if tag.lastvalue != None else (-1000.0 + random.random() * 2000.0)
 				tag.lastvalue += 0 if self.fixed else -10 + random.random() * 20
 			elif tag.type == "DINT":
