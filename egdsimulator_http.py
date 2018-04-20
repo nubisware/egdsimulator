@@ -128,8 +128,8 @@ class MyHandler(BaseHTTPRequestHandler):
 
 		query = cgi.parse_multipart(self.rfile, pdict)
 
-		mkvie = query.get("mkvie")[0] if query.get("mkvie")[0] != "" else None
-		custom = query.get("custom")[0] if query.get("custom")[0] != "" else None
+		mkvie = query.get("mkvie")[0] if query.get("mkvie")[0].decode("utf-8-sig") != "" else None
+		custom = query.get("custom")[0] if query.get("custom")[0].decode("utf-8-sig") != "" else None
 
 		state["delimiter"] = query.get("delimiter")[0]
 		state["skiplines"] = int(query.get("skiplines")[0])
@@ -148,8 +148,8 @@ class MyHandler(BaseHTTPRequestHandler):
 			
 		query = cgi.parse_multipart(self.rfile, pdict)
 		
-		mkvie = query.get("mkvie")[0] if query.get("mkvie")[0] != "" else None
-		custom = query.get("custom")[0] if query.get("custom")[0] != "" else None
+		mkvie = query.get("mkvie")[0] if query.get("mkvie")[0].decode("utf-8-sig") != "" else None
+		custom = query.get("custom")[0] if query.get("custom")[0].decode("utf-8-sig") != "" else None
 
 		state["delimiter"] = (query.get("delimiter")[0]).decode("utf-8")
 		state["skiplines"] = int(query.get("skiplines")[0])
@@ -204,21 +204,21 @@ class MyHandler(BaseHTTPRequestHandler):
 				print("Parsing MKVIE")
 				newegd = egdmodel.EGDConfiguration()
 				try:
-					MKVIe.Parser(newegd).parse(mkvie.decode("utf-8"), state["delimiter"], state["skiplines"])
-				except:
-					state["error"] = "Unable to parse MKVIe CSV"
+					MKVIe.Parser(newegd).parse(mkvie, state["delimiter"], state["skiplines"])
+				except Exception as e:
+					state["error"] = "Unable to parse MKVIe CSV: " + str(e) + str(sys.exc_info()[2].tb_lineno)
 					self.redirect("/")
 
 				simulator.egd = newegd
 				print(simulator.egd.dump())
 
 			elif custom != None and custom != "" and custom != b"":
-				print("Parsing Custom", custom.decode("utf-8"), state)
+				print("Parsing Custom")
 				newegd = egdmodel.EGDConfiguration()
 				try:
-					Custom.Parser(newegd).parse(custom.decode("utf-8"), state["delimiter"], state["skiplines"])
-				except:
-					state["error"] = "Unable to parse Custom CSV"
+					Custom.Parser(newegd).parse(custom, state["delimiter"], state["skiplines"])
+				except Exception as e:
+					state["error"] = "Unable to parse Custom CSV: " + str(e) + str(sys.exc_info()[2].tb_lineno)
 					self.redirect("/")
 
 				simulator.egd = newegd
