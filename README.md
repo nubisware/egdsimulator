@@ -68,13 +68,13 @@ Producer,Exchange,Address,Type
 ```
 Once the setup CSV has been uploaded the simulator can be started through the play button and paused through the pause button.
 
-It is possible to upload a different CSV while the simulator is running. This just changes the layout of the tags but keep the simulator going.
+It is possible to upload a different CSV while the simulator is running. This just changes the layout of the tags but keeps the simulator going.
 
-When the simulator is in paused mode it's possible to change the value generation policy to fixed which forces the simulator to generate always the same value otherwise random values will be generated according to the tag type.
+When the simulator is in paused mode, it's possible to change the value generation policy to _fixed_. This forces the simulator to generate always the same value for each tag. If _fixed_ is not set, random values will be generated according to the tag type.
 
 It is also possible, in paused mode, to change the UDP address to which the simulator publishes the Exchange values.
 
-In order to overview the EGD structure and the values produced by the simulator the web page shows a table with all Producers, Exchanges, Tags and produced values.
+In order to overview the EGD structure and the values produced by the simulator, the web page shows a table with all Producers, Exchanges, Tags and generated values.
 
 In order to see the changes in the readings it's just sufficient to reload the webpage. 
 
