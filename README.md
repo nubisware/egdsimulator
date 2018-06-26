@@ -33,7 +33,7 @@ It is also possible to change the port of the configuration interface. In order 
 ```
 python egdsimulator_http.py -p NEWPORT
 ```
-From the configuration interface it's possible to upload a CSV representing the setup of the simulator. Currently the simulator supports the CSV format obtained from exporting a setup from the MARK VI e control software and a simplified CSV format that contains only the four relevant information field for every tag.
+From the configuration interface it's possible to upload a CSV representing the setup of the simulator. Currently the simulator supports the CSV format obtained from exporting a setup from the MARK VI e control software. In addition, a simplified CSV format that contains only the four relevant information fields for every tag can be uploaded.
 
 Two example files for both formats are supplied in the _resource_ folder.
 
