@@ -39,6 +39,7 @@ class Parser(object):
 				if exchange == None:
 					exchange = producer.addExchange(exchangenumber, period)
 				
-				exchange.addTagFromAddressParts(tagtype, byteoffset, bitoffset)
-
+				#print("Adding tag to exchange",exchange.exchangenumber,tagtype,byteoffset, bitoffset)
+				t = exchange.addTagFromAddressParts(tagtype, byteoffset, bitoffset)
+				#print(t.dump())
 		self.model.buildCodecs()
