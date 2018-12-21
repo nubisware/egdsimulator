@@ -274,16 +274,28 @@ def boot(argv):
 	httpd.allow_reuse_address = True
 	httpd.daemon_threads = True
 	try:
+		print("\nCreating HTTP server...")
 		httpd.server_bind()
 		httpd.server_activate()
-		print("\n " + sys.argv[0] + " HTTP server is listening on port " + str(HTTP_PORT) + "...")
+		print(sys.argv[0] + " HTTP server is listening on port " + str(HTTP_PORT) + "...")
 		httpd.serve_forever()
-	except:
-		pass
+	except KeyboardInterrupt as e:
+		print("Interrupted by user...")
+	except Exception as e:
+		print(e)
+		print(traceback.format_exc())
 
-	simulator.stop()
-	httpd.shutdown()
-	httpd.server_close()
+	try:
+		print("Stopping simulator...")
+		simulator.stop()
+		print("Stopping HTTP server...")
+		httpd.shutdown()
+		httpd.server_close()
+	except Exception as e:
+		print(e)
+		print(traceback.format_exc())
+
+	sys.exit(1)
 
 if __name__ == "__main__":
 	boot(sys.argv)
