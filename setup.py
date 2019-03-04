@@ -59,7 +59,7 @@ setup(name='EGDSimulator',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         ],
-      packages=['egdsimulator'],
+      packages=['egdsimulator','egdmodel'],
       platforms="Linux, Windows, Mac",
       use_2to3=False,
       zip_safe=False)
