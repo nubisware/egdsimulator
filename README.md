@@ -80,4 +80,4 @@ In order to see the changes in the readings it's just sufficient to reload the w
 
 ## Version
 
-Version 0.1
+Version 0.5
