@@ -78,6 +78,9 @@ class EGDSimulator():
 		def start(self, producerid = None):
 			with self.socklock:
 				self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+				if self.address.endswith(".255"):
+					self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+
 			for producerid in self.egd.producers:
 				producer = self.egd.producers[producerid]
 				for exchangenumber in producer.exchanges:
