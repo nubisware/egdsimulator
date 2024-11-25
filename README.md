@@ -14,7 +14,7 @@ identified by a unique combination of three identifiers:
 The EGD protocol is used in many contexts of Industrial monitoring and control and is backed by GE. 
 
 Please refer to http://geplc.com/downloads/Labs/GFS-384%20M09%20EGD.pdf for further information.
-> **The offical link is no more available** you can refer to [the last version available](https://web.archive.org/web/20180219025736/http://geplc.com/downloads/Labs/GFS-384%20M09%20EGD.pdf) on the [Wayback Machine - Internet Archive](https://web.archive.org)
+> **The official link is no longer available** you can refer to [the last version available](https://web.archive.org/web/20180219025736/http://geplc.com/downloads/Labs/GFS-384%20M09%20EGD.pdf) on the [Wayback Machine - Internet Archive](https://web.archive.org)
 
 ## EGD Simulator
 
